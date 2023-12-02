@@ -9,7 +9,8 @@ services:
     volumes:
       - ./volumes/db/var/lib/postgresql/data:/var/lib/postgresql/data
       - /etc/localtime:/etc/localtime:ro
-    
+    env_file:
+      - run.env
   app:
     image: rheens/mattermost-app:v9.2.0
     build:
@@ -26,3 +27,5 @@ services:
       - ./volumes/app/mattermost/plugins:/mattermost/plugins:rw
       - ./volumes/app/mattermost/client-plugins:/mattermost/client/plugins:rw
       - /etc/localtime:/etc/localtime:ro
+    env_file:
+      - run.env
